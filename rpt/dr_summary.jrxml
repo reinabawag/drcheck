@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dr_summary" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="eb048024-5d44-4f44-b7b7-6a09bf84fb09">
+	<property name="ireport.zoom" value="1.1000000000000052"/>
+	<property name="ireport.x" value="12"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="date" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="name" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     dr_list.`number` AS dr_list_number,
+     dr_list.`customer` AS dr_list_customer,
+     dr_list.`itemCode` AS dr_list_itemCode,
+     dr_list.`description` AS dr_list_description,
+     dr_list.`lotNo` AS dr_list_lotNo,
+     dr_list.`qty` AS dr_list_qty,
+     dr_list.`um` AS dr_list_um,
+     dr_list.`lot_tracked` AS dr_list_lot_tracked,
+     dr_list.`ctr` AS dr_list_ctr,
+     dr_list.`status` AS dr_list_status,
+     dr_list.`name` AS dr_list_name
+FROM
+     `dr_list` dr_list
+WHERE dr_list.`date` = $P{date}]]>
+	</queryString>
+	<field name="dr_list_number" class="java.lang.String"/>
+	<field name="dr_list_customer" class="java.lang.String"/>
+	<field name="dr_list_itemCode" class="java.lang.String"/>
+	<field name="dr_list_description" class="java.lang.String"/>
+	<field name="dr_list_lotNo" class="java.lang.String"/>
+	<field name="dr_list_qty" class="java.lang.String"/>
+	<field name="dr_list_um" class="java.lang.String"/>
+	<field name="dr_list_lot_tracked" class="java.lang.Integer"/>
+	<field name="dr_list_ctr" class="java.lang.Integer"/>
+	<field name="dr_list_status" class="java.lang.Boolean"/>
+	<field name="dr_list_name" class="java.lang.String"/>
+	<group name="dr_list_number">
+		<groupExpression><![CDATA[$F{dr_list_number}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<textField isBlankWhenNull="true">
+					<reportElement x="0" y="0" width="197" height="12" uuid="74944387-ed42-4f4f-9ff2-f9f69814e8f4"/>
+					<textElement>
+						<font size="8" isBold="true" isItalic="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dr_list_number}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="7"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="90" splitType="Stretch">
+			<staticText>
+				<reportElement x="197" y="0" width="178" height="20" uuid="b265c292-959e-4287-952b-10b714319626"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AMERICAN WIRE & CABLE CO., INC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="197" y="12" width="178" height="20" uuid="b92b7e67-1357-4fbd-934a-325bf980dae2"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[8508 Km. 16 South Superhighway]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="197" y="23" width="178" height="20" uuid="d0eeb9e5-719b-40a7-b312-f3944683bc49"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Parañaque City, Philippines]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="472" y="68" width="100" height="12" uuid="c89f2c1e-8488-4650-9488-3e44df06e166"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="256" y="46" width="60" height="20" uuid="012fcfb4-715c-4b34-b24b-fc7d5460ee9d"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DR SUMMARY]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="42" y="68" width="100" height="12" uuid="80286ec5-0f67-4615-a475-d6289a726588"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="68" width="42" height="12" uuid="370ac454-fa99-4a43-b199-957d808416ca"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DR DATE:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="85" width="572" height="1" uuid="d7d2ede7-cea0-42d2-bf1f-dd48d815f99a"/>
+			</line>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="152" y="0" width="62" height="46" uuid="117a5a70-2352-49cf-b16e-9649f264e542"/>
+				<imageExpression><![CDATA["C:\\xampp\\htdocs\\drcheck\\rpt\\amwire_logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="90" height="12" uuid="a5a321db-d5ad-47da-93fd-0d8ae5116f71"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dr_list_customer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="0" width="100" height="12" uuid="1f1cf64a-01a5-4f7d-9d01-9591d0e512e7"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dr_list_itemCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="197" y="0" width="119" height="12" uuid="7db97c03-a4c5-4d1b-bec9-0682d4a1dc59"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dr_list_description}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement x="316" y="0" width="50" height="12" uuid="b5d18feb-5a81-4109-8558-3666b47c54d5"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dr_list_lotNo} == "NULL" ? "NO LOT" : $F{dr_list_lotNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="0" width="35" height="12" uuid="3d16bfe4-2d17-436e-b184-7af6374210e6"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dr_list_qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="404" y="0" width="15" height="12" uuid="e71c950f-95ce-4076-b1cf-6d0f72c7d85b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dr_list_um}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="0" width="11" height="12" uuid="cb5a0616-3b2a-468a-8bb2-92e6018900d5"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dr_list_ctr} == 0 ? "" : $F{dr_list_ctr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="434" y="0" width="40" height="12" uuid="a8398b71-8a8e-493d-8c7c-2a07ee0fb150"/>
+				<textElement>
+					<font size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dr_list_status} ? "CHECKED" : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="0" width="92" height="12" uuid="84934e97-0237-4c7c-a32b-fb25dcfdd6fb"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dr_list_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="81" splitType="Stretch">
+			<textField>
+				<reportElement x="214" y="69" width="80" height="12" uuid="e45636f1-ba42-4c11-ae9f-a644b1b56670"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="294" y="69" width="40" height="12" uuid="50f2c166-dd3c-4fc7-b516-023d3097f71d"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="81">
+			<textField>
+				<reportElement x="214" y="69" width="80" height="12" uuid="010739ee-1892-424d-b0b9-68f2c4bbdfa6"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="294" y="69" width="40" height="12" uuid="993ec194-0dd2-4504-944b-6017c46a3d74"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="434" y="6" width="100" height="12" uuid="25058057-09a3-45b2-acc2-d7a8eded6a0c"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Report Generated By:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="434" y="35" width="110" height="1" uuid="d9b36723-5ddb-4601-9f45-d7180d6491a3"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="434" y="22" width="110" height="12" uuid="2f7d2bde-4631-4814-b77f-93f1bc13d711"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="434" y="36" width="110" height="12" uuid="6714d529-0452-420d-a6fe-b5fb48fc051e"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Signature over printed name]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+</jasperReport>

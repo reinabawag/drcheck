@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dr_Logs_report" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0f9b2339-3f95-46da-abd2-5957f6597d94">
+	<property name="ireport.zoom" value="1.607691607500001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="startDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="endDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     scanlogs.`userId` AS scanlogs_userId,
+     scanlogs.`itemCode` AS scanlogs_itemCode,
+     scanlogs.`description` AS scanlogs_description,
+     scanlogs.`date` AS scanlogs_date,
+     scanlogs.`name` AS scanlogs_name
+FROM
+     `scanlogs` scanlogs
+WHERE
+     scanlogs.`date` BETWEEN $P{startDate} AND $P{endDate}]]>
+	</queryString>
+	<field name="scanlogs_userId" class="java.lang.String"/>
+	<field name="scanlogs_itemCode" class="java.lang.String"/>
+	<field name="scanlogs_description" class="java.lang.String"/>
+	<field name="scanlogs_date" class="java.sql.Timestamp"/>
+	<field name="scanlogs_name" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="114">
+			<staticText>
+				<reportElement x="312" y="13" width="178" height="20" uuid="f390f115-6adf-475e-ab80-9430955c7d11"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AMERICAN WIRE & CABLE CO., INC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="312" y="25" width="178" height="20" uuid="e46df6fa-2fdb-4e66-8a33-f41d7c49f754"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[8508 Km. 16 South Superhighway]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="312" y="38" width="178" height="20" uuid="7568c7de-8475-4668-9820-ef8eb6ed98f7"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Parañaque City, Philippines]]></text>
+			</staticText>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="252" y="0" width="60" height="60" uuid="2e58467e-7ebe-48c9-880c-3d29b260fcb0"/>
+				<imageExpression><![CDATA["C:\\xampp\\htdocs\\drcheck\\rpt\\amwire_logo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="351" y="72" width="100" height="20" uuid="8f120388-b83f-450f-bd76-e8a43060233f"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DR LOGS]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="700" y="89" width="100" height="20" uuid="0af8072d-4658-4438-991a-627662084651"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="89" width="27" height="20" uuid="e9f29b2c-2162-4566-9ac8-6d3b7b102dfd"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FROM:]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy" isBlankWhenNull="true">
+				<reportElement x="27" y="89" width="50" height="20" uuid="f2e39d73-e482-42a9-95cb-559d91f8a720"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{startDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="76" y="89" width="15" height="20" uuid="d5517a1f-f225-423a-9547-8b631c7a0144"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TO:]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy" isBlankWhenNull="true">
+				<reportElement x="91" y="89" width="50" height="20" uuid="40bcb5e1-ee28-46e2-8183-41591e23c28b"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{endDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="13" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="110" height="12" uuid="6d7fb655-6c4f-42c7-9d97-8cffff40f809"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="0" width="142" height="12" uuid="5327ca19-704a-4a29-98f6-36f360213060"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ITEM CODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="252" y="0" width="450" height="12" uuid="b0327160-a7da-4d6b-bcbf-eaf022f529f0"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCRIPTION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="702" y="0" width="98" height="12" uuid="8dfbcb76-1d14-4676-addd-b3d6e725abcf"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="13" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="110" height="12" uuid="dea93c87-b13f-4ce3-bfb8-631708eec9e9"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{scanlogs_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="0" width="142" height="12" uuid="f65cce1c-0bfd-4cb4-97eb-62a741a2db03"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{scanlogs_itemCode}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="252" y="0" width="450" height="12" uuid="a117c010-2362-44e8-8cb1-7a5049ba02e2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{scanlogs_description}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="702" y="0" width="98" height="12" uuid="5d73e2ab-bc56-45e7-b574-a2ec2b51dcf2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{scanlogs_date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="682" y="0" width="80" height="20" uuid="9300df40-7c5d-4ca4-a2f2-eab1ab0d7bea"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="762" y="0" width="40" height="20" uuid="7faf5d1a-4dd1-414a-abb6-44b696ae6f92"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

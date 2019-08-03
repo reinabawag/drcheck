@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dr_logs" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13dec396-21ff-4786-ac72-c132aa508a43">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="442a3ee7-0480-44b7-9879-6559f7c2701a">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     logs.`id` AS logs_id,
+     logs.`userId` AS logs_userId,
+     logs.`description` AS logs_description,
+     logs.`dateTime` AS logs_dateTime
+FROM
+     `logs` logs
+WHERE
+     dateTime ]]>
+		</queryString>
+		<field name="logs_userId" class="java.lang.String"/>
+		<field name="logs_description" class="java.lang.String"/>
+		<field name="logs_dateTime" class="java.sql.Timestamp"/>
+	</subDataset>
+	<parameter name="startDate" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="endDate" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     logs.`id` AS logs_id,
+     logs.`userId` AS logs_userId,
+     logs.`description` AS logs_description,
+     logs.`dateTime` AS logs_dateTime
+FROM
+     `logs` logs
+WHERE logs.`dateTime` <= $P{startDate} AND logs.`dateTime` >= $P{endDate}]]>
+	</queryString>
+	<field name="logs_id" class="java.lang.Integer"/>
+	<field name="logs_userId" class="java.lang.String"/>
+	<field name="logs_description" class="java.lang.String"/>
+	<field name="logs_dateTime" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch">
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="470" y="63" width="100" height="20" uuid="93704eea-4cf0-40be-8814-fcaa30c209fa"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="187" y="38" width="181" height="25" uuid="7836971b-268d-40b0-92fd-ed57f00e14b3"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[American Wire & Cable Co., Inc]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="0" y="0" width="83" height="63" uuid="ffa2b67f-2d86-4398-afbb-84a0f00e958b"/>
+				<imageExpression><![CDATA["amwire_logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="37" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="73" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="435" y="34" width="80" height="20" uuid="6574047a-d274-465f-81db-7e5fd87bb606"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="34" width="40" height="20" uuid="1edee9a9-ca03-47a3-a591-236947df3358"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
