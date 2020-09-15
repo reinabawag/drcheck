@@ -157,17 +157,4 @@ class Main extends CI_Controller
 			echo json_encode(['status' => FALSE, 'msg' => 'QUANTITY defined in the system doesn\'t matched']);
 		}
 	}
-
-	public function test()
-	{
-		$this->load->view('template/header');
-		$this->load->view('template/navbar-admin');
-		$this->load->view('test');
-		$this->load->view('template/footer');
-	}
-
-	public function ajax_test()
-	{
-		echo json_encode(array('data' => $this->input->post('id')));
-	}
 }

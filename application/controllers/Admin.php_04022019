@@ -553,10 +553,7 @@ class Admin extends CI_Controller
 
 		$db->distinct();
 		$db->group_by('number');
-		$db->select('number');
-		$db->where('date', $drDate);
-		$result = $db->get('dr_list');
-
+		$result = $db->get_where('dr_list', array('date' => $drDate));
 		echo json_encode($result->result());
 	}
 

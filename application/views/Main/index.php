@@ -241,9 +241,8 @@
 									var temp = $('#box').attr('ctr');
 
 									temp = $('#box').attr('ctr');
-									temp = parseInt(data.ctr) + 1;
-									$('#box').attr('ctr', data.ctr);
-
+									temp = parseInt(temp) + 1;
+									$('#box').attr('ctr', temp);
 									$('#count').show().html('<em>Item Scanned: '+temp+'</em>');
 									
 									$('#box').val(bcode);
@@ -272,14 +271,11 @@
 										$('#box').attr('ctr', parseInt(data.ctr));
 									}
 
-									// Updated 04/01/2019
-									// Update validation count boxes
-
 									var temp = $('#box').attr('ctr');
 									if (temp != $('#box').attr('val')) {
-										temp = parseInt(data.ctr) + 1;
+										temp = parseInt(temp) + 1;
 									} else {
-										temp = parseInt(data.ctr);
+										temp = parseInt(temp);
 									}
 									$('#box').attr('ctr', temp);
 									$('#count').show().html('<em>Item Scanned: '+temp+'</em>');
